@@ -1,0 +1,20 @@
+{
+  "name": "todoapp",
+  "version": "1.0.0",
+  "description": "This is my To-do App for TOP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "Chris A.",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "date-fns": "^2.28.0"
+  }
+}
