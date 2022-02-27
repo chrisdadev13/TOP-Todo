@@ -1,4 +1,4 @@
-export default function testingNav(){
+export default function Nav(param){
   let navigation = document.querySelectorAll("ul.navbar-nav > li");
   let content = document.querySelectorAll("div.content > div.section");
   let contentTitle = document.querySelector(".page-title");
@@ -8,7 +8,6 @@ export default function testingNav(){
       var current = document.getElementsByClassName("active");
       current[0].className = current[0].className.replace(" active", "");
       navigation[i].className += " active"; 
-      console.log(content);
       for(let j = 0; j < content.length; j++){
         //let currentContainer = document.getElementsByClassName("on");
         //currentContainer[0].className = currentContainer[0].className.replace(" on", "")
@@ -17,6 +16,7 @@ export default function testingNav(){
           currentContainer[0].className = currentContainer[0].className.replace(" on", "");
           content[j].classList.add("on");
           contentTitle.textContent = content[j].getAttribute("id");
+          param = contentTitle.getAttribute("id");
         }
       } 
    })
