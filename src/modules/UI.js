@@ -1,12 +1,13 @@
 import currentDate from './Today';
 import Task from './Todo';
-import testingNav from './Nav';
+import Project from './Project';
+import Nav from './Nav';
 
 export default class Main{
   static Page(){
     Main.showDateDOM();
     Main.addTask();
-    testingNav();
+    Nav();
   }
 
   static showDateDOM(){ //Create and show the current date in the DOM
@@ -21,9 +22,12 @@ export default class Main{
     //Data and information to show
     let dateInput = document.querySelector("#date-input");
     let priorityInput = document.querySelector("#priority-input");
+    let directionInput = document.querySelector("#direction-input");
+
     titleInput.addEventListener("click", () => {
       dateInput.style.display = "";
       priorityInput.style.display = "";
+      directionInput.style.display = "";
     })
   }
 
@@ -58,15 +62,24 @@ export default class Main{
     return date;
   }
 
+  static getDirection(){
+    const input = document.querySelector("#direction-input");
+    const direction = input.value;
+    
+    return direction;
+  }
+
   static createTask(){
     const title = Main.getTitle();
     const priority = Main.getPriority();
     const date = Main.getDate();
+    const direction = Main.getDirection();
 
     const task = new Task;
     task.setTitle(title);
     task.setPriority(priority);
     task.setDate(date);
+    task.setDirection(direction)
 
     return task;
   }
@@ -74,17 +87,20 @@ export default class Main{
   //Add task to the DOM:
   static addTask(){
     Main.showInputCharacteristics();
+
     const addButton = document.querySelector("#add-task-button");
-    const container = document.querySelector("#today-container");
 
     const reloadTitleInput = document.querySelector("#todo-title-input");
     const reloadDateInput = document.querySelector("#date-input");
 
     addButton.addEventListener("click", () => {
+      let container = document.querySelector(`#${Main.getDirection()}-container`);
       container.innerHTML += Main.addTaskDOM();
       reloadTitleInput.value = "";
       reloadDateInput.value = "";
       Main.removeTask();
+      console.log(container);
+      console.log(Main.getDirection());
     });
   }
 
