@@ -1,9 +1,10 @@
 export default class Task{
-  constructor(title, priority, date, check = false){
+  constructor(title, priority, date, check = false, direction){
     this.title = title;
     this.priority = priority;
     this.date = date;
     this.check = check;
+    this.direction = direction;
   }
 
   setTitle(title){
@@ -26,5 +27,10 @@ export default class Task{
       this.check = true;
       return this;
     }
+  }
+
+  setDirection(direction){
+    this.direction = direction;
+    return this;
   }
 }
