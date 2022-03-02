@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title> Dpad </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+<!--Content-->
+
+<body>
+  <!--Navigation-->
+  <navbar class="navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item active" id="Today">
+        <a href="#" class="nav-link">
+          <i class="bi bi-sun"></i>
+          <p class="nav-text">Today</p>
+        </a>
+      </li>
+      <li class="nav-item" id="Inbox">
+        <a href="#" class="nav-link">
+          <i class="bi bi-inbox"></i>
+          <p class="nav-text">Inbox</p>
+        </a>
+      </li>
+      <li class="nav-item" id="To-do">
+        <a href="#" class="nav-link">
+          <i class="bi bi-calendar-check"></i>
+          <p class="nav-text">To-do</p>
+        </a>
+      </li>
+      <span class="line"></span>
+      <li class="nav-item add-project-container">
+        <a href="#" class="nav-link">
+          <i id="add-project-button" class="bi bi-plus"></i>
+          <input class="project-title-input" type="text" placeholder="Add a project">
+        </a>
+      </li>
+    </ul>
+  </navbar>
+  <!--To-Do-->
+  <div class="content">
+    <div class="page-title">
+      Today
+    </div>
+    <div class="date-container">
+
+    </div>
+    <!--Sections-->
+    <div id="Today" class="content-today section on">
+      <div class="todo-input-container">
+        <i id="add-task-button" class="bi-plus" style="cursor: pointer;"></i>
+        <div class="flex">
+          <input type="text" id="todo-title-input" maxlength="40" placeholder="Add a task">
+          <input style="display:none;" type="date" id="date-input">
+          <select style="display:none;" name="priority" id="priority-input">
+            <option value="Low">Low</option>
+            <option value="Mid">Mid</option>
+            <option value="High">High</option>
+          </select>
+          <select style="display:none;" name="direction" id="direction-input">
+            <option value="Today">Today</option>
+            <option value="Inbox">Inbox</option>
+            <option value="To-do">To-do</option>
+          </select>
+        </div>
+      </div>
+
+      <form id="Today-container" class="today-todos">
+      </form>
+    </div>
+
+    <div id="Inbox" class="content-inbox section">
+      <form id="Inbox-container" class="today-todos">
+      </form>
+    </div>
+
+    <div id="To-do" class="content-todo section">
+      <form id="To-do-container" class="today-todos">
+      </form>
+    </div>
+
+  </div>
+  <!--Javascript-->
+  <script src="main.js"></script>
+</body>
+
+</html>
