@@ -7,6 +7,7 @@ export default class Main{
   static Page(){
     Main.showDateDOM();
     Main.addTask();
+    Main.addProject();
     Nav();
   }
 
@@ -28,6 +29,89 @@ export default class Main{
       dateInput.style.display = "";
       priorityInput.style.display = "";
       directionInput.style.display = "";
+    })
+  }
+
+  //Get project data:
+  static getProjectTitle(){
+    const input = document.querySelector(".project-title-input");
+    const title = input.value;
+    return title;
+  }
+
+  static createProject(){
+    const title = Main.getProjectTitle();
+    const newProject = new Project();
+    newProject.setTitle(title);
+
+    return newProject;
+  }
+
+  static addProjectNavDOM(){
+    const project = Main.createProject();
+
+    const li = document.createElement("li");
+    li.className = "nav-item";
+    li.setAttribute("id", project.title);
+
+    const a = document.createElement("a");
+    a.className = "nav-link";
+
+    const i = document.createElement("i");
+    i.className = "bi bi-list";
+
+    const p = document.createElement("p");
+    p.className = "nav-text";
+    p.textContent = project.title;
+
+    a.appendChild(i);
+    a.appendChild(p);
+
+    li.appendChild(a);
+
+    return li;
+  }
+
+  static addProjectContent(){
+    const project = Main.createProject();
+
+    const projectContent = document.createElement("div");
+    projectContent.className = `content-${project.title}`;
+    projectContent.classList.add("section");
+    projectContent.setAttribute("id", project.title);
+
+    const projectTodo = document.createElement("form");
+    projectTodo.className = "today-todos";
+    projectTodo.setAttribute("id", `${project.title}-container`);
+
+    projectContent.appendChild(projectTodo);
+
+    return projectContent;
+  }
+
+  static addProjectDirection(){
+    const project = Main.createProject();
+
+    const projectDirection = document.createElement("option");
+    projectDirection.setAttribute("value", project.title);
+    projectDirection.textContent = project.title;
+
+    return projectDirection;
+  }
+
+  static addProject(){
+    const container = document.querySelector("ul.navbar-nav");
+    const content = document.querySelector(".content");
+    const directionContainer = document.querySelector("#direction-input");
+    const addButton = document.querySelector("#add-project-button");
+
+    addButton.addEventListener("click", () => {
+      container.appendChild(Main.addProjectNavDOM());
+      content.appendChild(Main.addProjectContent());
+      directionContainer.appendChild(Main.addProjectDirection());
+      Nav();
+      const reloadInput = document.querySelector(".project-title-input");
+      reloadInput.value = "";
     })
   }
 
